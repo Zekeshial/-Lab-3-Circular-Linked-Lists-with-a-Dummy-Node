@@ -9,6 +9,11 @@ public class Node<T> {
         this.next = next;
     }
 
+    public Node(T data) {
+        this.data = data;
+        this.next = null;
+    }
+
     public T getData() {
         return data;
     }
@@ -17,16 +22,16 @@ public class Node<T> {
         this.data = data;
     }
 
-    public Node<T> getNext() {
-        return next;
-    }
-
     public void setNext(Node<T> next) {
         this.next = next;
     }
 
-    public Optional<Node<T>> getNext() {
-        return Optional.ofNullable(next);
+//    public Optional<Node<T>> getNext() {
+//        return Optional.ofNullable(next);
+//    }
+
+    public Node<T> getNext() {
+        return next;
     }
 
 
