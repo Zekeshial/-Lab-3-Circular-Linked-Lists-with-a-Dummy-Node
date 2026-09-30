@@ -13,7 +13,10 @@ public class LinkedList<T> {
     }
 
 
-
+    /**
+     * Adds an item to the linked list
+     * @param data the data of the item
+     */
     public void addItem(T data) {
         Node<T> newNode = new Node<>(data, tail);
 
@@ -21,6 +24,11 @@ public class LinkedList<T> {
         head = newNode;
     }
 
+    /**
+     * Removes an item from the linked list
+     * @param dataToDelete the data you wish to delete
+     * @return if deleted true if not false
+     */
     public boolean remove(T dataToDelete) {
         if (head == dummy){
             System.out.println("You can't delete nothing");
@@ -51,11 +59,22 @@ public class LinkedList<T> {
         return false;
     }
 
+    /**
+     * Fines an item in the linked list
+     * @param dataToFind the data you wish to find
+     * @return the node of the item in the list
+     */
     public Node<T> find(T dataToFind) {
         Node<T> firstIndex = tail.getNext();
         return findHelper(dataToFind, firstIndex);
     }
 
+    /**
+     * A helper function for the find method
+     * @param dataToDelete data to find
+     * @param indexedNode the indexed node for recursion
+     * @return the indexed node if found, dummy if not found or list is empty, and the next data point in the list if it not the one you are looking for.
+     */
     private Node<T> findHelper(T dataToDelete, Node<T> indexedNode) {
         if (dataToDelete == indexedNode.getData()) {
             return indexedNode;
@@ -67,29 +86,9 @@ public class LinkedList<T> {
     }
 
     /**
-     * Old Method for showing the List of information
+     * Shows the data in the list as a string.
+     * @return the list an as string or list is empty if there is nothing in the list.
      */
-    public void showList(){
-        if (head == dummy) {
-            System.out.println("List is empty");
-            return;
-        }
-
-        System.out.print("Elements in list are: ");
-
-        Node<T> indexedValue = tail.getNext();
-        do {
-            if (indexedValue == dummy) {
-                break;
-            }
-            System.out.print(indexedValue.getData() + " ");
-            indexedValue = indexedValue.getNext();
-
-        } while (!Objects.equals(indexedValue, tail));
-        System.out.println();
-
-    }
-
     public String showListRecursive() {
         Node<T> startingIndex = tail;
         if (head == dummy) {
@@ -98,7 +97,12 @@ public class LinkedList<T> {
         return "Elements in list are: " + showListRecursiveHelper(startingIndex);
     }
 
-    public String showListRecursiveHelper(Node<T> index) {
+    /**
+     * helper function to make the showlist work
+     * @param index the Indexed node of the list
+     * @return returns over each node and gives the value of the node.
+     */
+    private String showListRecursiveHelper(Node<T> index) {
         if (index == dummy) {
             return showListRecursiveHelper(index.getNext());
         } else if (index.getNext() != tail){
@@ -108,6 +112,10 @@ public class LinkedList<T> {
         }
     }
 
+    /**
+     * Shows the list backwards
+     * @return the list as a string backwards or tells you the list is empty if there is nothing in the list.
+     */
     public String showReverseList() {
         Node<T> startingIndex = tail;
         if (head == dummy) {
@@ -116,6 +124,11 @@ public class LinkedList<T> {
         return "Elements in list are: " + showReverseListHelper(startingIndex);
     }
 
+    /**
+     * A helper function for the show reverse list method
+     * @param index the indexed node of the list
+     * @return the values of the list as a string backwards.
+     */
     public String showReverseListHelper(Node<T> index) {
         if (index == dummy) {
             return showReverseListHelper(index.getNext());

@@ -13,35 +13,53 @@ class LinkedListTest {
         list.addItem(10);
 
 
-        String actual = list.showListRecursive();
 
+        Integer actual = list.getHead().getData();
+        Integer expected = 10;
         assertEquals(expected, actual);
     }
 
     @Test
-    void showList() {
+    void addItem2() {
         LinkedList<Integer> list = new LinkedList<>();
         list.addItem(5);
         list.addItem(3);
         list.addItem(2);
         list.addItem(10);
 
-        String expected = "Elements in list are: 5, 3, 2, 10";
-        String actual = list.showListRecursive();
 
+
+        Integer actual = list.getTail().getNext().getData();
+        Integer expected = 5;
         assertEquals(expected, actual);
     }
 
     @Test
-    void showList2() {
+    void addItem4() {
         LinkedList<Integer> list = new LinkedList<>();
+        list.addItem(5);
 
-
-        String expected = "List is empty";
-        String actual = list.showListRecursive();
-
+        Integer actual = list.getTail().getNext().getData();
+        Integer expected = 5;
         assertEquals(expected, actual);
     }
+
+    @Test
+    void addItem3() {
+        LinkedList<Integer> list = new LinkedList<>();
+        list.addItem(5);
+        list.addItem(3);
+        list.addItem(2);
+        list.addItem(10);
+
+
+
+        Integer actual = list.getTail().getNext().getNext().getData();
+        Integer expected = 3;
+        assertEquals(expected, actual);
+    }
+
+
 
     @Test
     void test() {
@@ -175,6 +193,31 @@ class LinkedListTest {
         Integer expected = 5;
         assertEquals(expected, actual);
 
+    }
+
+    @Test
+    void showListRecursive() {
+        LinkedList<Integer> list = new LinkedList<>();
+        list.addItem(5);
+        list.addItem(3);
+        list.addItem(2);
+        list.addItem(10);
+
+        String expected = "Elements in list are: 5, 3, 2, 10";
+        String actual = list.showListRecursive();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void showListRecursive2() {
+        LinkedList<Integer> list = new LinkedList<>();
+
+
+        String expected = "List is empty";
+        String actual = list.showListRecursive();
+
+        assertEquals(expected, actual);
     }
 
     @Test
