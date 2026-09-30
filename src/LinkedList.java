@@ -66,6 +66,9 @@ public class LinkedList<T> {
         }
     }
 
+    /**
+     * Old Method for showing the List of information
+     */
     public void showList(){
         if (head == dummy) {
             System.out.println("List is empty");
@@ -85,6 +88,42 @@ public class LinkedList<T> {
         } while (!Objects.equals(indexedValue, tail));
         System.out.println();
 
+    }
+
+    public String showListRecursive() {
+        Node<T> startingIndex = tail;
+        if (head == dummy) {
+            return "List is empty";
+        }
+        return "Elements in list are: " + showListRecursiveHelper(startingIndex);
+    }
+
+    public String showListRecursiveHelper(Node<T> index) {
+        if (index == dummy) {
+            return showListRecursiveHelper(index.getNext());
+        } else if (index.getNext() != tail){
+            return  index.getData() + ", " + showListRecursiveHelper(index.getNext());
+        } else {
+            return String.valueOf(index.getData());
+        }
+    }
+
+    public String showReverseList() {
+        Node<T> startingIndex = tail;
+        if (head == dummy) {
+            return "List is empty";
+        }
+        return "Elements in list are: " + showReverseListHelper(startingIndex);
+    }
+
+    public String showReverseListHelper(Node<T> index) {
+        if (index == dummy) {
+            return showReverseListHelper(index.getNext());
+        } else if (index.getNext() != tail){
+            return showReverseListHelper(index.getNext()) + ", " + index.getData();
+        } else {
+            return String.valueOf(index.getData());
+        }
     }
 
     public Node<T> getHead() {

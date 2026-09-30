@@ -6,57 +6,46 @@ class LinkedListTest {
 
     @Test
     void addItem() {
-    }
-
-    @Test
-    void showList() {
-    }
-
-    @Test
-    void test() {
         LinkedList<Integer> list = new LinkedList<>();
         list.addItem(5);
-        list.addItem(4);
         list.addItem(3);
         list.addItem(2);
         list.addItem(10);
 
-        list.showList();
-        list.remove(4);
-        list.showList();
+
+        String actual = list.showListRecursive();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void showList() {
+        LinkedList<Integer> list = new LinkedList<>();
+        list.addItem(5);
+        list.addItem(3);
+        list.addItem(2);
+        list.addItem(10);
+
+        String expected = "Elements in list are: 5, 3, 2, 10";
+        String actual = list.showListRecursive();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void showList2() {
+        LinkedList<Integer> list = new LinkedList<>();
 
 
+        String expected = "List is empty";
+        String actual = list.showListRecursive();
 
-        //        Node<T> current = head;
-//        Node<T> previous = null;
-//        while (!Objects.equals(current.getNext(), head)) {
-//            if (current.getData() == dataToDelete) {
-//                if (previous == null) {
-//                    Node<T> last = head;
-//                    while (!Objects.equals(last.getNext(), head)) {
-//                        last = last.getNext();
-//                    }
-//                    head = current.getNext();
-//                    last.getNext() = head;
-//                    return;
-//                } else {
-//                    previous.getNext() = current.getNext();
-//
-//                    if (Objects.equals(current, tail)) {
-//                        tail = previous;
-//                    }
-//                    return;
-//                }
-//            }
-//            previous = current;
-//            current = current.getNext();
-//
-//        }
-//
-//        if (Objects.equals(current, head) && current.getData() == dataToDelete) {
-//            previous.getNext()= head;
-//            tail = previous;
-//        }
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void test() {
+
 
     }
 
@@ -186,5 +175,31 @@ class LinkedListTest {
         Integer expected = 5;
         assertEquals(expected, actual);
 
+    }
+
+    @Test
+    void showReverseList() {
+
+        LinkedList<Integer> list = new LinkedList<>();
+        list.addItem(5);
+        list.addItem(3);
+        list.addItem(2);
+        list.addItem(10);
+        String expected = "Elements in list are: 10, 2, 3, 5";
+        String actual = list.showReverseList();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void showReverseList2() {
+
+        LinkedList<Integer> list = new LinkedList<>();
+
+
+        String expected = "List is empty";
+        String actual = list.showReverseList();
+
+        assertEquals(expected, actual);
     }
 }
